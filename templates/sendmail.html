@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Send Mail</title>
+</head>
+
+<body>
+    <a href="{% url 'mailapp:home' %}">Home</a>
+    <form action="" method="POST" style="width: 40%; margin: 5% 30%;">
+        {% if message %}
+        <li style="color: red;">{{message}}</li>
+        {% endif %}
+        <h2 style="text-align: center;">Send Email in Background using Async Django 3.1</h2>
+        <div style="width: 100%; border: 1px solid black; padding: 10px 20px;">
+            {% csrf_token %}
+            <p>
+                <label for="">To Email:</label><br>
+                <input type="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="eg. abc@xyz.com" required style="width: 100%; height: 30px; font-size: 20px;">
+            </p>
+            <p>
+                <label for="">Subject</label><br>
+                <input type="text" name="subject" required style="width: 100%; height: 30px; font-size: 20px;">
+            </p>
+            <p>
+                <label for="">Message</label><br>
+                <textarea name="message" id="" rows="5" required style="width: 100%; font-size: 20px;"></textarea>
+            </p>
+            <p>
+                <button>Send Mail</button>
+            </p>
+        </div>
+    </form>
+</body>
+
+</html>
